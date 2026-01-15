@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Lock } from 'lucide-react';
 import axios from 'axios';
@@ -284,15 +284,25 @@ const Login = () => {
             className="mt-6 text-center"
             variants={itemVariants}
           >
-            <p className="text-gray-400 text-sm font-mono">
-              New to the Metaverse?{' '}
-              <Link
-                to="/"
-                className="text-cyan-400 hover:text-cyan-300 underline transition-colors duration-300"
-              >
-                Register here
-              </Link>
+            <p className="text-gray-400 text-sm font-mono inline">
+              New to HayalPerest?{' '}
             </p>
+            <button
+              type="button"
+              onClick={() => navigate('/')}
+              className="text-pink-400 hover:text-pink-300 font-mono font-bold cursor-pointer transition-all duration-300 hover:underline"
+              style={{
+                textShadow: '0 0 10px rgba(244, 114, 182, 0.8)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.textShadow = '0 0 20px rgba(244, 114, 182, 1)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.textShadow = '0 0 10px rgba(244, 114, 182, 0.8)';
+              }}
+            >
+              CREATE ACCOUNT
+            </button>
           </motion.div>
         </motion.form>
 

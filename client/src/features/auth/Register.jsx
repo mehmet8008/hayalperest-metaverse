@@ -248,6 +248,32 @@ const Register = () => {
             <span className="relative z-10">REGISTER</span>
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </motion.button>
+
+          {/* Login Link */}
+          <motion.div
+            className="mt-6 text-center"
+            variants={itemVariants}
+          >
+            <p className="text-gray-400 text-sm font-mono inline">
+              Already have an account?{' '}
+            </p>
+            <button
+              type="button"
+              onClick={() => navigate('/login')}
+              className="text-cyan-400 hover:text-cyan-300 font-mono font-bold cursor-pointer transition-all duration-300 hover:underline"
+              style={{
+                textShadow: '0 0 10px rgba(6, 182, 212, 0.8)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.textShadow = '0 0 20px rgba(6, 182, 212, 1)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.textShadow = '0 0 10px rgba(6, 182, 212, 0.8)';
+              }}
+            >
+              LOGIN HERE
+            </button>
+          </motion.div>
         </motion.form>
 
         {/* Footer text */}

@@ -561,6 +561,21 @@ const Dashboard = () => {
     }
   };
 
+  // Handle logout/disconnect
+  const handleLogout = () => {
+    // Clear credentials
+    localStorage.removeItem('token');
+    
+    // Disconnect socket if connected
+    if (socket) {
+      socket.disconnect();
+      setSocket(null);
+    }
+    
+    // Force redirect to Login page immediately
+    navigate('/login');
+  };
+
   // Handle using an item from inventory
   const handleUseItem = async (itemId, itemType, itemName) => {
     try {
@@ -698,7 +713,7 @@ const Dashboard = () => {
       >
         {/* Header */}
         <motion.div className="mb-8 text-center" variants={itemVariants}>
-          <div className="flex items-center justify-center gap-4 mb-2">
+          <div className="flex items-center justify-center gap-4 mb-2 relative">
             {/* Profile Image Avatar */}
             <motion.button
               onClick={() => setShowProfileImageModal(true)}
@@ -724,6 +739,19 @@ const Dashboard = () => {
                 HAYALPEREST
               </h1>
             </div>
+            {/* Logout/Disconnect Button */}
+            <motion.button
+              onClick={handleLogout}
+              className="absolute right-0 bg-red-600/20 border border-red-500/50 rounded px-4 py-2 text-red-400 font-mono text-sm hover:bg-red-600/40 hover:border-red-500 hover:text-red-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.6)] transition-all duration-300 flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                boxShadow: '0 0 15px rgba(239, 68, 68, 0.3)'
+              }}
+            >
+              <X className="w-4 h-4" />
+              <span>DISCONNECT</span>
+            </motion.button>
           </div>
           <p className="text-purple-400 font-mono italic">Just Imagine</p>
           <p className="text-gray-400 text-sm font-mono mt-2">COMMAND_CENTER::ONLINE</p>
@@ -794,6 +822,17 @@ const Dashboard = () => {
                     <span className="text-red-500 group-hover:text-red-400">⚡ SYSTEM CORE</span>
                   </motion.button>
                 )}
+
+                {/* Logout/Disconnect Button */}
+                <motion.button
+                  onClick={handleLogout}
+                  className="w-full bg-black/50 border border-red-500/50 rounded px-4 py-3 text-left font-mono text-sm hover:border-red-500 hover:bg-red-600/20 hover:shadow-[0_0_25px_rgba(239,68,68,0.6)] transition-all duration-300 flex items-center gap-3 group shadow-[0_0_15px_rgba(239,68,68,0.2)] mt-4"
+                  whileHover={{ scale: 1.02, x: 5 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <X className="w-5 h-5 text-red-500 group-hover:text-red-400" />
+                  <span className="text-red-400 group-hover:text-red-300 font-bold">DISCONNECT</span>
+                </motion.button>
               </div>
             </div>
           </motion.div>
