@@ -289,7 +289,7 @@ const Login = () => {
             </p>
             <button
               type="button"
-              onClick={() => navigate('/')}
+              onClick={() => window.location.href = '/'}
               className="text-pink-400 hover:text-pink-300 font-mono font-bold cursor-pointer transition-all duration-300 hover:underline"
               style={{
                 textShadow: '0 0 10px rgba(244, 114, 182, 0.8)'

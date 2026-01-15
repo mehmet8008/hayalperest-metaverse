@@ -259,7 +259,7 @@ const Register = () => {
             </p>
             <button
               type="button"
-              onClick={() => navigate('/login')}
+              onClick={() => window.location.href = '/login'}
               className="text-cyan-400 hover:text-cyan-300 font-mono font-bold cursor-pointer transition-all duration-300 hover:underline"
               style={{
                 textShadow: '0 0 10px rgba(6, 182, 212, 0.8)'
